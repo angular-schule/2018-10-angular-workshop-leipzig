@@ -1,4 +1,4 @@
-<img src="http://assets.angular.schule/logo-angular-workshop-ng6.png">
+<img src="http://assets.angular.schule/logo-angular-workshop-ng7.png">
 
 #### **von Ferdinand Malcher**
 
