@@ -11,7 +11,7 @@ export class DashboardComponent implements OnInit {
 
   constructor() {
   }
-  
+
   ngOnInit() {
     this.books = ['Angular', 'React', 'Vue.js'];
   }
