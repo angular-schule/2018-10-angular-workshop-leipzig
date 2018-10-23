@@ -1,1 +1,15 @@
-{{ books }}
+<br-book
+    *ngFor="let b of books"
+    [book]="b"
+></br-book>
+
+<ul>
+    <li *ngFor="let b of books; index as i; last as l">
+        {{ i + 1 }} {{ b.title }}
+        <span *ngIf="l">ENDE</span>
+    </li>
+</ul>
+
+<p>
+    Anzahl Bücher: {{ books.length }}
+</p>
