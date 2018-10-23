@@ -1,2 +1,3 @@
 https://prettier.io/
 https://angular.io/guide/styleguide
+https://angular.schule/blog/2018-05-one-app-per-customer

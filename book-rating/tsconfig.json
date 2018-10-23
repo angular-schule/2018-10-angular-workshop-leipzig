@@ -16,6 +16,14 @@
     "lib": [
       "es2017",
       "dom"
-    ]
+    ],
+    "paths": {
+      "its-uilib": [
+        "dist/its-uilib"
+      ],
+      "its-uilib/*": [
+        "dist/its-uilib/*"
+      ]
+    }
   }
 }
