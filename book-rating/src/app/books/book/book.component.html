@@ -12,5 +12,8 @@
     <p>
       <span *ngFor="let x of getRating()">*</span>
     </p>
+
+    <button (click)="rateUp()" class="btn btn-success mr-2"> + </button>
+    <button (click)="rateDown()" class="btn btn-danger mr-2"> - </button>
   </div>
 </div>
