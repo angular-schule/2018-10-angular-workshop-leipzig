@@ -5,3 +5,5 @@ https://angular.schule/blog/2018-05-one-app-per-customer
 https://doesitmutate.xyz/
 https://github.com/NagRock/ts-mockito
 https://angular.io/guide/testing
+https://github.com/ngx-translate/core/issues/783
+https://github.com/angular/angular/issues/16477
