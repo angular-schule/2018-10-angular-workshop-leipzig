@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Book } from '../shared/book';
 import { BookRatingService } from '../shared/book-rating.service';
 
@@ -10,6 +10,7 @@ import { BookRatingService } from '../shared/book-rating.service';
 export class BookComponent implements OnInit {
 
   @Input() book: Book;
+  @Output() ratingChange = new EventEmitter<Book>();
 
   constructor(private rs: BookRatingService) { }
 
@@ -18,12 +19,13 @@ export class BookComponent implements OnInit {
 
   rateUp() {
     const ratedBook = this.rs.rateUp(this.book);
-    console.log(ratedBook);
-
-    this.book = ratedBook; // TODO: noch nicht gut, weil Dashboard nicht informiert wird
+    this.ratingChange.emit(ratedBook);
   }
-  
-  rateDown() {}
+
+  rateDown() {
+    const ratedBook = this.rs.rateDown(this.book);
+    this.ratingChange.emit(ratedBook);
+  }
 
   getRating(): any[] {
     return new Array(this.book.rating);

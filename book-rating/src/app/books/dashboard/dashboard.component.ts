@@ -36,4 +36,19 @@ export class DashboardComponent implements OnInit {
     ];
   }
 
+
+  updateSortList(book: Book) {
+    /* Alternativ:
+    const cleanedList = this.books.filter(b => b.isbn !== book.isbn); // Filter erzeugt Kopie
+    cleanedList.push(book);
+    cleanedList.sort((a, b) => b.rating - a.rating);
+    this.books = cleanedList;
+    */
+
+    this.books = this.books
+      .map(b => b.isbn === book.isbn ? book : b)
+      .sort((a, b) => b.rating - a.rating);
+
+  }
+
 }
