@@ -3,7 +3,7 @@ import { TestBed } from '@angular/core/testing';
 import { BookRatingService } from './book-rating.service';
 import { Book } from './book';
 
-fdescribe('BookRatingService', () => {
+describe('BookRatingService', () => {
   let rs: BookRatingService; // außerhalb beforeEach() deklarieren, damit im it() verfügbar ist
   let book: Book;
 
