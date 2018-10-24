@@ -3,3 +3,5 @@ https://angular.io/guide/styleguide
 https://angular.schule/blog/2018-05-one-app-per-customer
 
 https://doesitmutate.xyz/
+https://github.com/NagRock/ts-mockito
+https://angular.io/guide/testing
