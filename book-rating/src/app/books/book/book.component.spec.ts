@@ -41,7 +41,7 @@ describe('BookComponent', () => {
     // WICHTIG: Diese Zeile nach der Initialisierung des Books
     // damit book in der View aktualisiert wird
     fixture.detectChanges();
-    fixture.autoDetectChanges();
+    // fixture.autoDetectChanges(); // ????
   });
 
   it('should create', () => {

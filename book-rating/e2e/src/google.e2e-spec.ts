@@ -11,7 +11,7 @@ describe('Google', () => {
             .search('mitteldeutschland')
             .getFirstResultHeadline();
 
-        expect(headline).toContain('Wikipedia Hallo');
+        expect(headline).toContain('Wikipedia');
     });
 
     afterAll(() => browser.waitForAngularEnabled(true));
