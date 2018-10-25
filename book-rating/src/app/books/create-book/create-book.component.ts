@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Book } from '../shared/book';
 
 @Component({
   selector: 'br-create-book',
@@ -9,6 +10,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class CreateBookComponent implements OnInit {
 
   bookForm: FormGroup;
+  @Output() submitBook = new EventEmitter<Book>();
 
   constructor() { }
 
@@ -21,6 +23,24 @@ export class CreateBookComponent implements OnInit {
       ]),
       title: new FormControl('', Validators.required),
       description: new FormControl('')
+    });
+  }
+
+  submitForm() {
+    // Buch bauen
+    const newBook: Book = {
+      ...this.bookForm.value,
+      rating: 1
+    };
+
+    // Event emitten
+    this.submitBook.emit(newBook);
+
+    // Reset
+    this.bookForm.reset({
+      title: '',
+      isbn: '',
+      description: ''
     });
   }
 

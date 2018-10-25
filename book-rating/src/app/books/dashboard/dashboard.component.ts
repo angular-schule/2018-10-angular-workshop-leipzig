@@ -20,6 +20,12 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  addBook(book: Book) {
+    this.bs.create(book).subscribe(() => {
+      this.books = [...this.books, book];
+    });
+  }
+
 
   updateSortList(book: Book) {
     /* Alternativ:
