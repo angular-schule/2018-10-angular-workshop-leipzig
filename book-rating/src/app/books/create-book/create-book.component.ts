@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'br-create-book',
@@ -14,8 +14,12 @@ export class CreateBookComponent implements OnInit {
 
   ngOnInit() {
     this.bookForm = new FormGroup({
-      isbn: new FormControl(''),
-      title: new FormControl(''),
+      isbn: new FormControl('', [
+        Validators.required,
+        Validators.minLength(10), // Errorcode: minlength
+        Validators.maxLength(13)
+      ]),
+      title: new FormControl('', Validators.required),
       description: new FormControl('')
     });
   }
