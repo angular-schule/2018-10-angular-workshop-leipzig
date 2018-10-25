@@ -1,3 +1,8 @@
+<h2>SEARCH RESULTS</h2>
+<ul>
+  <li *ngFor="let book of results$ | async">{{ book.title }}</li>
+</ul>
+
 <form [formGroup]="bookForm" (ngSubmit)="submitForm()">
 
   <div class="form-group">

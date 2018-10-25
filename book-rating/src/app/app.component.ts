@@ -10,9 +10,23 @@ export class AppComponent {
   url = 'https://angular.schule';
   d = new Date();
 
-  /*constructor() {
-    setTimeout(() => {
-      this.title = 'HALLO';
-    }, 2000);
-  }*/
+  constructor() {
+    
+    const obs = {
+      next: e => console.log(e),
+      error: err => console.error(err),
+      complete: () => console.log('FERTSCH')
+    };
+
+    function myObservable(observer) {
+      observer.next('A');
+      observer.next('B');
+      observer.next('C');
+      setTimeout(() => observer.next('D'), 2000);
+      setTimeout(() => observer.complete(), 3000);
+    }
+
+    // myObservable(obs);
+
+  }
 }

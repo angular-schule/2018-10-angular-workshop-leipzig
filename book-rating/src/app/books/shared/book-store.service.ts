@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 
 import { Book } from './book';
+import { map, delay } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +31,16 @@ export class BookStoreService {
       { responseType: 'text' }
     );
   }
+
+  search(term: string): Observable<Book[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/books/search/${term}`).pipe(
+      map(rawBooks => rawBooks ? rawBooks : []),
+      /*map(rawBooks => rawBooks.map(
+        rawBook => this.mapToBook(rawBook))
+      )*/
+    );
+  }
+
 
   getAllStatic(): Book[] {
     return [
