@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from '../shared/book';
 import { BookStoreService } from '../shared/book-store.service';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'br-dashboard',

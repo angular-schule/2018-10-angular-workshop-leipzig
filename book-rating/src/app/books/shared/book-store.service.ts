@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { Book } from './book';
-import { map, delay } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { map, delay, catchError } from 'rxjs/operators';
+import { Observable, throwError, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -15,13 +15,31 @@ export class BookStoreService {
   constructor(private http: HttpClient) {}
 
   getAll(): Observable<Book[]> {
-    return this.http.get<Book[]>(`${this.apiUrl}/books`);
-    // TODO: Mapping auf echte Bücher
-    // TODO: Error Handling
+    return this.http.get<any[]>(`${this.apiUrl}/books`).pipe(
+      map(rawBooks => rawBooks.map(
+        rawBook => this.mapToBook(rawBook)
+      )),
+      catchError(err => { // WICHTIG: Funktion muss immer ein Observable returnen
+        console.log(err);
+        // return throwError('FEHLER!'); // Fehler weiterwerfen
+        return of([]); // Fehler ignorieren
+      })
+    );
   }
 
   getSingle(isbn: string): Observable<Book> {
-    return this.http.get<Book>(`${this.apiUrl}/book/${isbn}`);
+    return this.http.get<any>(`${this.apiUrl}/book/${isbn}`).pipe(
+      map(rawBook => this.mapToBook(rawBook))
+    );
+  }
+
+  private mapToBook(rawBook: any): Book {
+    return {
+      isbn: rawBook.isbn,
+      title: rawBook.title,
+      description: rawBook.description,
+      rating: rawBook.rating
+    };
   }
 
   create(book: Book): Observable<any> {
@@ -35,9 +53,9 @@ export class BookStoreService {
   search(term: string): Observable<Book[]> {
     return this.http.get<any[]>(`${this.apiUrl}/books/search/${term}`).pipe(
       map(rawBooks => rawBooks ? rawBooks : []),
-      /*map(rawBooks => rawBooks.map(
+      map(rawBooks => rawBooks.map(
         rawBook => this.mapToBook(rawBook))
-      )*/
+      )
     );
   }
 
