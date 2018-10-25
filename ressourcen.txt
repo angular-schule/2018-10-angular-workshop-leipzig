@@ -14,3 +14,5 @@ https://github.com/angular/angular/blob/master/CHANGELOG.md
 https://toddmotto.com/building-tesla-range-calculator-angular-2-reactive-forms
 http://rxmarbles.com/
 https://hackernoon.com/using-observables-to-make-our-app-work-with-barcode-scanners-e8a673fba625
+https://leanpub.com/router
+https://www.youtube.com/watch?v=R2bfqHOuZSs
