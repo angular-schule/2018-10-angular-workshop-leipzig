@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { BooksRoutingModule } from './books-routing.module';
 import { BookComponent } from './book/book.component';
@@ -7,6 +8,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ButtonSharedModule } from '../button-shared/button-shared.module';
 import { ItsUilibModule } from 'its-uilib';
 import { BookRatingService } from './shared/book-rating.service';
+import { CreateBookComponent } from './create-book/create-book.component';
 
 
 @NgModule({
@@ -14,11 +16,13 @@ import { BookRatingService } from './shared/book-rating.service';
     CommonModule,
     BooksRoutingModule,
     ButtonSharedModule,
-    ItsUilibModule
+    ItsUilibModule,
+    ReactiveFormsModule
   ],
   declarations: [
     BookComponent,
-    DashboardComponent
+    DashboardComponent,
+    CreateBookComponent
   ],
   exports: [
     DashboardComponent
